@@ -184,12 +184,13 @@ const ContactUs = () => {
           {/* Contact Info */}
           <div className={styles.contactInfo}>
              <p>abdulazeemsheik4@gmail.com</p>
-             <p>+91 729944172</p>
+             <p>+91 7259944172</p>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
 
 export default ContactUs;
