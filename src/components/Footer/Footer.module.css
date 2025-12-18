@@ -1,0 +1,30 @@
+.footer {
+  padding: 2.5rem 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Keep dark, slightly transparent */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+  color: #fff; /* Use main text color */
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.socialIcons a {
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+  color: var(--light-color); /* Social icons are light */
+}
+
+.socialIcons a:hover {
+  color: var(--accent-color); /* Hover with accent */
+}
