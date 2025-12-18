@@ -1,0 +1,169 @@
+/* src/components/Features/Features.module.css */
+
+:root {
+  --dark-color: #0A0826;
+  --accent-color: #8B5CF6;
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+.featuresSection {
+  padding: 3rem 1rem;
+  background-color: var(--dark-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Prevent page-wide scroll, keep scroll inside container */
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.title {
+  font-size: clamp(1.8rem, 6vw, 2.25rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+/* --- HORIZONTAL SCROLL CONTAINER (Replacing Grid) --- */
+.grid {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto; /* Enable horizontal scroll */
+  padding-bottom: 2rem; /* Space for scrollbar */
+  width: 100%;
+  
+  /* Smooth scrolling and snapping */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  
+  /* Hide standard scrollbar in Firefox */
+  scrollbar-width: thin; 
+  scrollbar-color: var(--accent-color) rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Webkit Scrollbar */
+.grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.grid::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+/* --- Card Styles --- */
+.card {
+  /* Fixed width for horizontal scrolling */
+  flex: 0 0 300px; 
+  scroll-snap-align: start;
+  
+  background-color: #170537;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.1), inset 0 0 10px rgba(255,255,255,0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 320px;
+  height: auto;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(23, 5, 55, 0.95) 0%, rgba(23, 5, 55, 0.6) 100%); /* Darker gradient for better text contrast */
+  opacity: 1;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 5px 20px rgba(0, 234, 255, 0.25), 0 0 30px rgba(106, 0, 255, 0.15), inset 0 0 15px rgba(255,255,255,0.1);
+  border-color: rgba(0, 234, 255, 0.4);
+  z-index: 10; /* Bring hovered card to front */
+}
+
+.card:hover .cardOverlay {
+  background: linear-gradient(0deg, rgba(23, 5, 55, 0.85) 0%, rgba(23, 5, 55, 0.4) 80%);
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #E0E0E0;
+  margin-bottom: 1rem;
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(0, 216, 255, 0.6);
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- UPDATED SUBTITLE STYLE --- */
+.cardSubtitle {
+  font-size: 1rem;
+  font-weight: 700;
+  /* Lighter/Brighter Purple for visibility */
+  color: #d8b4fe; 
+  margin-bottom: 0.8rem;
+  font-family: 'Krona One', monospace;
+  opacity: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Strong shadow for contrast */
+  letter-spacing: 0.5px;
+}
+
+.cardDescription {
+  color: #E0E0E0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- Media Queries --- */
+
+/* Mobile adjustment */
+@media (max-width: 640px) {
+  .card {
+    flex: 0 0 85vw; /* Wider cards on mobile */
+    min-height: 280px;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 1280px) {
+   .featuresSection {
+      padding: 5rem 1rem;
+   }
+   .title {
+       font-size: 2.75rem;
+   }
+}
