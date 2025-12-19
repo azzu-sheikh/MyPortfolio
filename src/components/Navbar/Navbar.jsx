@@ -1,7 +1,6 @@
 // src/components/Navbar/Navbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
-// src/components/Navbar/Navbar.jsx
-import { Menu, X, Home, Phone, LogOut, Briefcase, Award } from 'lucide-react'; // Standard import
+import { Menu, X, Home, Phone, LogOut, Briefcase, Award, FileText } from 'lucide-react'; // Added FileText
 import { 
   DropdownMenu, 
   DropdownMenuTrigger, 
@@ -18,6 +17,9 @@ const menuItems = [
   { label: 'Certifications', href: '#certifications', icon: <Award size={18} /> },
   { label: 'Contact', href: '#contactus', icon: <Phone size={18} /> },
 ];
+
+// --- PASTE YOUR RESUME LINK HERE ---
+const RESUME_LINK = "https://drive.google.com/file/d/15EhVmUJWl7KZ7aJqGmtu5ucvxjNKCZrZ/view?usp=sharing"; 
 
 function cn(...inputs) {
   return inputs.filter(Boolean).join(' ');
@@ -86,29 +88,39 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
         {/* Header Content */}
         <div className={cn(styles.headerContent, isSidebarMode && styles.hidden)}>
           
-          {/* Navigation Links (With Icons) */}
+          {/* LEFT: Navigation Links */}
           <div className={styles.navLinks}>
             {menuItems.map(item => (
               <a 
                 key={item.label} 
                 href={item.href} 
-                className={styles.navLink} // Use the new class
+                className={styles.navLink}
                 onClick={(e) => handleNavClick(e, item.href)}
               >
-                {/* Render Icon */}
                 {item.icon}
                 <span>{item.label}</span>
               </a>
             ))}
           </div>
            
-          {/* Right Group: Auth & Hamburger */}
+          {/* RIGHT: Auth Buttons & Resume */}
           <div className={styles.navRightGroup}>
+            
+            {/* NEW: Resume Button */}
+            <a 
+              href={RESUME_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.resumeButton}
+            >
+              <FileText size={18} />
+              <span>Resume</span>
+            </a>
+
             {isLoggedIn && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className={styles.usernameButton}>
-                    {/* User Icon or Initial could go here if available */}
                     {username}
                   </button>
                 </DropdownMenuTrigger>
@@ -125,7 +137,7 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
               </DropdownMenu>
             )}
 
-            {/* Hamburger Button (Header) */}
+            {/* Hamburger for header mode */}
             <button
                 ref={buttonRef} 
                 className={cn(styles.hamburgerButton, buttonSizes[buttonSize], styles.hamburgerButtonHeader)}
@@ -142,7 +154,7 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
           </div>
         </div>
 
-        {/* Hamburger (Sidebar Mode) */}
+        {/* Hamburger (sidebar mode) */}
         {isSidebarMode && (
           <button
             ref={buttonRef} 
@@ -165,7 +177,6 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
         onClose={() => setIsOpen(false)}
         menuItems={menuItems}
         zIndex={zIndex}
-        logoAlt="MiArtz Logo"
         isLoggedIn={isLoggedIn}
         username={username}
         onLogout={() => { onLogout(); setIsOpen(false); }}
