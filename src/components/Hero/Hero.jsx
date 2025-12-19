@@ -1,8 +1,27 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
 import Background from '../images/Background.jpg';
 import styles from './Hero.module.css';
+
+// --- Lazy Load the 3D Model Component ---
+const SplineEmbed = lazy(() => import('./SplineEmbed'));
+
+// --- Loading Placeholder for 3D Model ---
+const ModelLoader = () => (
+  <div style={{
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'rgba(255,255,255,0.3)',
+    fontSize: '0.9rem',
+    letterSpacing: '1px'
+  }}>
+    {/* Optional: Add a small spinner or text here */}
+  </div>
+);
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -40,21 +59,18 @@ const Hero = () => {
 
   // Handle the toggle interaction
   const handleToggle = (e) => {
-    // Only trigger if currently in "Explore" state (unchecked)
     if (!isToggled) {
       setIsToggled(true); 
-      
-      // Wait 2 seconds for the "Let's Go" animation to play, then navigate
       setTimeout(() => {
         navigate('projects');
-        setIsToggled(false); // RESET: Ensures the button returns to "Explore" and works again
+        setIsToggled(false); 
       }, 2000);
     }
   };
 
   return (
-    <section ref={heroRef} className={styles.hero}>
-      {/* Background */}
+    <section ref={heroRef} id="home" className={styles.hero}>
+      {/* Background Image */}
       <motion.div
         className={styles.heroBackground}
         initial={{ opacity: 0 }}
@@ -64,6 +80,8 @@ const Hero = () => {
         <img
           src={Background}
           alt="Hero Background"
+          // 'eager' is better for Hero backgrounds (LCP), but 'lazy' can save data if requested.
+          loading="eager" 
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
       </motion.div>
@@ -71,21 +89,16 @@ const Hero = () => {
       {/* Floating Glow */}
       <div className={styles.float} />
 
-      {/* 3D Model Embed */}
+      {/* 3D Model Embed (Lazy Loaded) */}
       <motion.div
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.0, delay: 1.5 }}
       >
-        <iframe
-          src="https://my.spline.design/nexbotrobotcharacterconcept-QCoQHCf2ON8zVmHKNzgS3JRs/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          title="3D Model"
-          style={{ width: '100%', height: '100%' }}
-        />
+        <Suspense fallback={<ModelLoader />}>
+          <SplineEmbed />
+        </Suspense>
       </motion.div>
 
       {/* Content */}
@@ -124,7 +137,7 @@ const Hero = () => {
               </button>
             </motion.div>
 
-            {/* Button 2: Toggle "Explore" -> "Let's Go" -> Navigate to Projects */}
+            {/* Button 2: Toggle "Explore" -> "Let's Go" */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
