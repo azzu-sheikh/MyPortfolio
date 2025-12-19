@@ -7,66 +7,68 @@
   --text-secondary: #a1a1aa;
   --accent-color: #8B5CF6;
   --highlight-color: #00D8FF;
-  --glass-bg: rgba(15, 12, 41, 0.65); /* Slightly darker for contrast */
+  --glass-bg: rgba(15, 12, 41, 0.65);
   
-  /* --- ENHANCED REFLECTION VARIABLES --- */
-  
-  /* 1. Stronger Gradient Border (The "Cut Glass" edge) */
+  /* --- REFLECTION VARIABLES --- */
   --glass-reflection-gradient: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.7) 0%,    /* Very bright top-left white */
-    rgba(255, 255, 255, 0.15) 20%,  /* Quick fade to subtle */
+    rgba(255, 255, 255, 0.7) 0%,    
+    rgba(255, 255, 255, 0.15) 20%,  
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.0) 100%
   );
 
-  /* 2. Stronger Inner Rim Light (The "Bevel" effect) */
   --glass-rim-shadow: 
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.45), /* Sharp, bright top-left inner line */
-    inset 0 0 20px rgba(255, 255, 255, 0.05),    /* General inner glow */
-    inset -1px -1px 0 0 rgba(0, 0, 0, 0.2);      /* Dark bottom-right edge for depth */
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.45), 
+    inset 0 0 20px rgba(255, 255, 255, 0.05),    
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.2);      
     
   --nav-height: 70px;
 }
 
-/* --- Base Navbar Styles --- */
+/* --- Base Navbar Styles (Optimized) --- */
 .navbar {
   position: fixed;
   z-index: 1000;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, width, height, background-color, box-shadow;
-  --animation-duration: 0.8s;
+  
+  /* PERFORMANCE FIX: Hardware Acceleration */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  
+  /* PERFORMANCE FIX: Smoother Easing Curve */
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  
+  /* PERFORMANCE FIX: Only hint strictly necessary properties */
+  will-change: width, height, transform, border-radius, background-color;
 }
 
 /* --- Header Mode (Desktop Floating Capsule) --- */
 .navbarHeaderMode {
   top: 1.5rem;
   left: 50%;
-  transform: translateX(-50%);
+  /* Using translate3d prevents sub-pixel blurring during animation */
+  transform: translate3d(-50%, 0, 0);
   width: 90%;
   max-width: 1200px;
   height: var(--nav-height);
   
-  /* Glass Background */
   background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(120%); /* High blur + saturation for "premium glass" */
+  backdrop-filter: blur(24px) saturate(120%);
   -webkit-backdrop-filter: blur(24px) saturate(120%);
   
-  /* --- REFLECTION BORDER --- */
-  border: 1px solid transparent; /* Transparent to show gradient below */
+  border: 1px solid transparent; 
   border-radius: 50px;
   
-  /* The Magic: Painting the border with the reflection gradient */
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
   background-image: 
-      linear-gradient(var(--glass-bg), var(--glass-bg)), /* Content BG */
-      var(--glass-reflection-gradient); /* Border Gradient */
+      linear-gradient(var(--glass-bg), var(--glass-bg)), 
+      var(--glass-reflection-gradient); 
   
-  /* --- REFLECTION SHADOW --- */
   box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.5), /* Deep drop shadow */
-    var(--glass-rim-shadow); /* Inner rim light */
+    0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+    var(--glass-rim-shadow); 
 }
 
 /* --- Header Content Layout --- */
@@ -78,14 +80,20 @@
   height: 100%;
   width: 100%;
   opacity: 1;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.2s ease-out; /* Faster fade out */
   box-sizing: border-box;
   gap: 2rem;
+
+  /* PERFORMANCE FIX: Prevent content reflow lag */
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .headerContent.hidden {
   opacity: 0;
   pointer-events: none;
+  /* Disable delays so it hides instantly */
+  transition: opacity 0.1s linear; 
 }
 
 /* --- Navigation Links --- */
@@ -95,7 +103,6 @@
   gap: 0.5rem; 
 }
 
-/* Creative Link Style */
 .navLink {
   display: flex;
   align-items: center;
@@ -117,12 +124,11 @@
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Hover Effects */
 .navLink:hover {
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
-  border-color: rgba(255, 255, 255, 0.2); /* Subtle hover border */
+  border-color: rgba(255, 255, 255, 0.2); 
   text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 
@@ -151,18 +157,60 @@
   bottom: 5px;
 }
 
-/* --- Right Group (Auth + Hamburger) --- */
+/* --- Right Group --- */
 .navRightGroup {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* --- Sidebar Mode (Floating Bubble) --- */
+/* --- Resume Button --- */
+.resumeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(60, 41, 92, 0.4));
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: 
+      linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(60, 41, 92, 0.4)), 
+      var(--glass-reflection-gradient);
+      
+  box-shadow: 
+    0 4px 15px rgba(139, 92, 246, 0.2),
+    var(--glass-rim-shadow);
+}
+
+.resumeButton:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(139, 92, 246, 0.1));
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.5),
+    var(--glass-rim-shadow);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.resumeButton:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px white);
+}
+
+/* --- Sidebar Mode (Collapsed) --- */
 .navbarSidebarMode {
   top: 1rem;
   left: 1rem;
-  transform: translateX(0);
+  /* Use translate3d to avoid repaint lag */
+  transform: translate3d(0, 0, 0); 
   width: 50px;
   height: 50px;
   background: transparent;
@@ -170,29 +218,27 @@
   border-radius: 50%;
   box-shadow: none;
   overflow: visible;
+  backdrop-filter: none; /* Disabling blur on collapsed container improves performance */
 }
 
-/* --- HAMBURGER BUTTON (MATCHING GLASS REFLECTION) --- */
+/* --- Hamburger Button --- */
 .hamburgerButton {
   position: relative;
-  width: 48px; /* Slightly larger for better touch target */
+  width: 48px;
   height: 48px;
   
-  /* 1. Base Glass Background */
   background: rgba(139, 92, 246, 0.15); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   
-  /* 2. Gradient Border Logic (Same as Navbar) */
   border: 1px solid transparent; 
   border-radius: 50%;
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
   background-image: 
       linear-gradient(rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.15)), 
-      var(--glass-reflection-gradient); /* The strong white reflection */
+      var(--glass-reflection-gradient); 
       
-  /* 3. Rim Light Shadow */
   box-shadow: 
     0 8px 20px rgba(0,0,0,0.3),
     var(--glass-rim-shadow);
@@ -207,14 +253,13 @@
 
 .hamburgerButton:hover {
   transform: scale(1.08);
-  /* Brighter glow on hover */
   box-shadow: 
     0 0 25px rgba(139, 92, 246, 0.6),
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.8); /* Super bright rim on hover */
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.8); 
     
   background-image: 
       linear-gradient(rgba(139, 92, 246, 0.3), rgba(0, 216, 255, 0.2)),
-      linear-gradient(135deg, #ffffff, rgba(255,255,255,0.2)); /* Full white flash on border */
+      linear-gradient(135deg, #ffffff, rgba(255,255,255,0.2)); 
 }
 
 .hamburgerButton:hover svg {
@@ -229,7 +274,6 @@
   left: 1rem;
 }
 
-/* Icon Transitions */
 .iconContainer {
   position: relative;
   width: 24px;
@@ -247,7 +291,7 @@
 .iconHidden { opacity: 0; transform: scale(0) rotate(180deg); }
 
 
-/* --- User Dropdown (With Matching Reflection) --- */
+/* --- User Button --- */
 .usernameButton {
   padding: 0.6rem 1.4rem;
   font-size: 0.9rem;
@@ -261,7 +305,6 @@
   align-items: center;
   gap: 0.5rem;
   
-  /* Glass + Reflection Border */
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid transparent;
