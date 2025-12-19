@@ -12,8 +12,14 @@ export default function Certifications() {
       link: "https://drive.google.com/file/d/1HWdmyzHbiNeof6SniS7nreDq5qEHNh89/view?usp=drivesdk" // PASTE LINK HERE
     },
     { 
+      title: "Inter-Intra Institutional Internship Program - 2021-22", 
+      issuer: "Jawaharlal Nehru New College of Engineering, Shivamogga", 
+      date: "29 Oct 2022",
+      link: "https://drive.google.com/file/d/1gQITLjbj18s3wnioPamF5gh9Ub06FDFy/view?usp=sharing" // PASTE LINK HERE
+    },
+    { 
       title: "Python Programming", 
-      issuer: "I360DigiTMG", 
+      issuer: "360DigiTMG", 
       date: "28 Aug 2025",
       link: "https://drive.google.com/file/d/1H_Nc8lCiQttb_2asiDL6QDQOrEepZ-5P/view?usp=sharing"
     },
@@ -132,3 +138,4 @@ export default function Certifications() {
   );
 
 }
+
