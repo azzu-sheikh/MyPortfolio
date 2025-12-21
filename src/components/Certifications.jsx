@@ -18,14 +18,14 @@ export default function Certifications() {
       link: "https://drive.google.com/file/d/1H_Nc8lCiQttb_2asiDL6QDQOrEepZ-5P/view?usp=sharing"
     },
     { 
-      title: "Basic course on SQL", 
+      title: "SQL", 
       issuer: "360DigiTMG", 
       date: "24 Sep 2025",
       link: "https://drive.google.com/file/d/1jDFjPj9d3bY8gW1w4MUci6MM1lW1uAHa/view?usp=drive_link" // PASTE YOUR GOOGLE DRIVE LINK HERE
     },
     { 
       title: "Geo Data Processing using Python", 
-      issuer: "IIRS", 
+      issuer: "ISRO - IIRS", 
       date: "18 Jan 2024",
       link: "https://drive.google.com/file/d/1gkZWQF4BHqq1pCzIdDMShMJL2YxH7bSE/view?usp=drivesdk" 
     },
@@ -173,3 +173,4 @@ export default function Certifications() {
     </section>
   );
 }
+
