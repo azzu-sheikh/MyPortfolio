@@ -24,6 +24,12 @@ export default function Certifications() {
       link: "https://drive.google.com/file/d/1jDFjPj9d3bY8gW1w4MUci6MM1lW1uAHa/view?usp=drive_link" // PASTE YOUR GOOGLE DRIVE LINK HERE
     },
     { 
+      title: "Data Visualisation using Power BI", 
+      issuer: "360DigiTMG", 
+      date: "9 Oct 2025",
+      link: "https://drive.google.com/file/d/1H-gPksVKc4RH8AtPGKhDGWF0Rd8We3Zu/view?usp=drive_link" // PASTE YOUR GOOGLE DRIVE LINK HERE
+    },
+    { 
       title: "Geo Data Processing using Python", 
       issuer: "ISRO - IIRS", 
       date: "18 Jan 2024",
@@ -173,4 +179,5 @@ export default function Certifications() {
     </section>
   );
 }
+
 
