@@ -30,6 +30,12 @@ export default function Certifications() {
       link: "https://drive.google.com/file/d/1H-gPksVKc4RH8AtPGKhDGWF0Rd8We3Zu/view?usp=drive_link" // PASTE YOUR GOOGLE DRIVE LINK HERE
     },
     { 
+      title: "Cloud Computing", 
+      issuer: "360DigiTMG", 
+      date: "9 Sep 2025",
+      link: "https://drive.google.com/file/d/1InL1VB2byGuvEhVQ-0v97JawRG_6bmtK/view?usp=drive_link" // PASTE YOUR GOOGLE DRIVE LINK HERE
+    },
+    { 
       title: "Geo Data Processing using Python", 
       issuer: "ISRO - IIRS", 
       date: "18 Jan 2024",
@@ -179,5 +185,6 @@ export default function Certifications() {
     </section>
   );
 }
+
 
 
