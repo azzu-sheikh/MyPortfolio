@@ -6,6 +6,12 @@ import styles from './Certifications.module.css';
 export default function Certifications() {
   const certifications = [
     { 
+      title: "Artificial Intelligence & Deep Learning", 
+      issuer: "360DigiTMG", 
+      date: "10 Jan 2026",
+      link: "https://drive.google.com/file/d/1lDHtDDpU0MzlNOyikZDOsCuCBEK1fvjo/view?usp=drive_link" 
+    },
+    { 
       title: "Full-Stack Development", 
       issuer: "Varcons Technology Pvt Ltd", 
       date: "30 Nov 2023",
@@ -185,6 +191,7 @@ export default function Certifications() {
     </section>
   );
 }
+
 
 
 
