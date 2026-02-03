@@ -19,7 +19,7 @@ const menuItems = [
 ];
 
 // --- PASTE YOUR RESUME LINK HERE ---
-const RESUME_LINK = "https://drive.google.com/file/d/1hJd16h-H9GTRmMFews-af8EdkXXVHDdz/view?usp=drive_link"; 
+const RESUME_LINK = "https://drive.google.com/file/d/1RoK2FgZJ6ik_OTcu6RFgikSkukfjlrCQ/view?usp=drive_link"; 
 
 function cn(...inputs) {
   return inputs.filter(Boolean).join(' ');
@@ -186,4 +186,5 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
 };
 
 export default Navbar;
+
 
