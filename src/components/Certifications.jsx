@@ -12,6 +12,12 @@ export default function Certifications() {
       link: "https://drive.google.com/file/d/1lDHtDDpU0MzlNOyikZDOsCuCBEK1fvjo/view?usp=drive_link" 
     },
     { 
+      title: "Data Science using Python & R Programming", 
+      issuer: "360DigiTMG", 
+      date: "31 Oct 2025",
+      link: "https://drive.google.com/file/d/12yCJfcXC9F0q61n0FITL3bhfLGAThf_N/view?usp=drive_link" 
+    },
+    { 
       title: "Full-Stack Development", 
       issuer: "Varcons Technology Pvt Ltd", 
       date: "30 Nov 2023",
@@ -191,6 +197,7 @@ export default function Certifications() {
     </section>
   );
 }
+
 
 
 
