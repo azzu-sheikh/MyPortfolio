@@ -118,12 +118,16 @@
   margin-top: auto;
   padding-top: 0.8rem;
   border-top: 1px solid rgba(255, 255, 255, 0.34);
+  display: flex;
+  justify-content: center; /* Centers the buttons */
+  gap: 20px;               /* Adds 20px of space between the links */
+  margin-top: 15px;
 }
 
 .linkButton {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 8px;
   font-size: 0.8rem;
   font-weight: 600;
   color: #F5F5F5;
@@ -189,4 +193,5 @@
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
 }
