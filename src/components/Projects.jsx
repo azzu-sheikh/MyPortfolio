@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt} from "react-icons/fa";
 import styles from './Projects.module.css';
 
 export default function Projects() {
   const projects = [
+    { 
+      title: "AI-Powered IVF Embryo Grading", 
+      description: "A state-of-the-art computer vision pipeline for automating IVF embryo assessment. Features live YOLOv8 segmentation, PyTorch-based fragmentation analysis, and clinical reporting.",
+      tech: ["YOLOv8", "PyTorch", "Streamlit", "OpenCV", "Plotly"],
+      link: "https://github.com/azzu-sheikh/IVF-Embryo-Fragmentation",
+      demo: "https://ivf-embryo-fragmentation-analysis.streamlit.app/" // Using portfolio as placeholder
+    },
     { 
       title: "Job Portal – Smart Hiring Platform", 
       description: "A full-stack job portal with embedded AI chatbot for answering resume-related queries. Features include document upload/retrieval using LangChain, semantic search with FAISS, and recruiter dashboards.",
@@ -18,17 +25,25 @@ export default function Projects() {
       link: "https://github.com/azzu-sheikh/chatbot-using-Ollama" 
     },
     { 
-      title: "EcoWise – Solar Savings Estimator", 
-      description: "Web application to calculate solar panel installation costs, CO₂ savings, and long-term benefits. Features EMI calculation, failure rate analysis, and savings visualization.",
-      tech: ["Streamlit", "HTML", "Python", "Data Visualization"],
-      link: "https://github.com/azzu-sheikh" 
-    },
-    { 
       title: "Sanjeevini Bot – Healthcare Assistant", 
       description: "Virtual healthcare assistant utilizing Random Forest algorithms to predict medical conditions, recommend personalized medicines, and enhance accessibility via TTS.",
       tech: ["Machine Learning", "Random Forest", "Python", "TTS"],
       link: "https://github.com/azzu-sheikh/Sanjeeini-Bot" 
     },
+    { 
+      title: "Smart Bookmark App", 
+      description: "Real-time bookmark manager with Google OAuth and Supabase Realtime synchronization. Features a glassmorphic UI, Singleton Client patterns, and secure Row Level Security.",
+      tech: ["Next.js 15", "Supabase", "Tailwind CSS", "PostgreSQL", "Vercel"],
+      link: "https://github.com/azzu-sheikh/smart-bookmark-app", // Update with specific repo if available
+      demo: "https://smart-bookmark-app-azeemsheikh.vercel.app//" // Update with specific deployment link
+    },
+    { 
+      title: "EcoWise – Solar Savings Estimator", 
+      description: "Web application to calculate solar panel installation costs, CO₂ savings, and long-term benefits. Features EMI calculation, failure rate analysis, and savings visualization.",
+      tech: ["Streamlit", "HTML", "Python", "Data Visualization"],
+      link: "https://github.com/azzu-sheikh" 
+    },
+    
     { 
       title: "Electrostatic Precipitator (ESP)", 
       description: "IoT prototype developed to filter polluted air using electrostatic technology. Programmed with Python and C on Raspberry Pi, focusing on hardware-software integration.",
@@ -162,4 +177,5 @@ export default function Projects() {
       </div>
     </section>
   );
+
 }
