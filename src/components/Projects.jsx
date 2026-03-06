@@ -166,8 +166,8 @@ export default function Projects() {
 
             <div className={styles.links}>
               <a href={p.link} target="_blank" rel="noopener noreferrer" className={styles.linkButton}>
-                <FaGithub size={18} /> Code
-              </a> &nbsp;&nbsp;&nbsp;&nbsp;
+                <FaGithub size={18} /> Code &nbsp;&nbsp;&nbsp;&nbsp;
+              </a> 
               {/* Logic to show Live Demo button if link is provided */}
               {p.demo && p.demo !== "#" && (
                 <a href={p.demo} target="_blank" rel="noopener noreferrer" className={styles.linkButton}>
@@ -195,5 +195,6 @@ export default function Projects() {
   );
 
 }
+
 
 
