@@ -10,7 +10,7 @@ export default function Projects() {
       description: "A state-of-the-art computer vision pipeline for automating IVF embryo assessment. Features live YOLOv8 segmentation, PyTorch-based fragmentation analysis, and clinical reporting.",
       tech: ["YOLOv8", "PyTorch", "Streamlit", "OpenCV", "Plotly"],
       link: "https://github.com/azzu-sheikh/IVF-Embryo-Fragmentation",
-      demo: "https://ivf-embryo-fragmentation-analysis.streamlit.app/" // Using portfolio as placeholder
+      demo: "https://ivf-embryo-fragmentation.streamlit.app/" // Using portfolio as placeholder
     },
     { 
       title: "Job Portal – Smart Hiring Platform", 
@@ -198,6 +198,7 @@ export default function Projects() {
   );
 
 }
+
 
 
 
