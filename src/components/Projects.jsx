@@ -6,6 +6,13 @@ import styles from './Projects.module.css';
 export default function Projects() {
   const projects = [
     { 
+    title: "AI Weather Forecasting System", 
+    description: "A next-generation weather analytics dashboard that transforms raw meteorological data into actionable insights using ML forecasting and AI-driven natural language reasoning.",
+    tech: ["Streamlit", "Scikit-Learn", "Plotly", "SmolLM2", "Pandas"],
+    link: "https://github.com/azzu-sheikh/weather-forecasting", // Update with the specific repository link if different
+    demo: "https://ai-weather-forecasting.streamlit.app/"
+  },
+    { 
       title: "AI-Powered IVF Embryo Grading", 
       description: "A state-of-the-art computer vision pipeline for automating IVF embryo assessment. Features live YOLOv8 segmentation, PyTorch-based fragmentation analysis, and clinical reporting.",
       tech: ["YOLOv8", "PyTorch", "Streamlit", "OpenCV", "Plotly"],
@@ -198,6 +205,7 @@ export default function Projects() {
   );
 
 }
+
 
 
 
