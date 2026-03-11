@@ -181,7 +181,7 @@ export default function Projects() {
             
               {p.demo && p.demo !== "#" && (
                 <a href={p.demo} target="_blank" rel="noopener noreferrer" className={styles.linkButton}>
-                  <FaExternalLinkAlt size={16} /> Live Dem
+                  <FaExternalLinkAlt size={16} /> Live Demo
                 </a>
               )}
             </div>
@@ -205,6 +205,7 @@ export default function Projects() {
   );
 
 }
+
 
 
 
