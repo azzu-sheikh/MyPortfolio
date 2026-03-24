@@ -8,7 +8,7 @@ export default function Projects() {
     {
   title: "Multi-Modal Agentic AI Assistant",
   description: "Built a scalable Agentic AI system that replaces single-model dependency with dynamic multi-model routing. Achieves ultra-low latency using lightweight Hugging Face models, supports tool execution, memory, and is fully optimized for real-time deployment on Streamlit Cloud.",
-  tech: ["Agentic AI Architecture", "Large Language Models (LLMs)", "LangChain & LangGraph", "Hugging Face Inference API", "Model Routing & Orchestration", "Retrieval-Augmented Generation (RAG)", "Streamlit (Production UI)", "Python (Backend Engineering)", "Vector Databases (FAISS/Chroma)","Prompt Engineering" ],
+  tech: ["Agentic AI Architecture", "LLMs", "LangChain & LangGraph", "Hugging Face", "RAG", "Streamlit", "Python", "VectorDB","Prompt Engineering" ],
   link: "https://github.com/azzu-sheikh/Multi-Modal-Agentic-AI-Assistant",
   demo: "#"
 },
