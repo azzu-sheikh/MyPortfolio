@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import Background from '../images/Background.jpg';
 import styles from './Hero.module.css';
 
-// --- Lazy Load the 3D Model Component ---
+// Lazy load
 const SplineEmbed = lazy(() => import('./SplineEmbed'));
 
-// --- Loading Placeholder for 3D Model ---
+// Loader
 const ModelLoader = () => (
   <div style={{
     width: '100%',
@@ -19,7 +19,7 @@ const ModelLoader = () => (
     fontSize: '0.9rem',
     letterSpacing: '1px'
   }}>
-    {/* Optional: Add a small spinner or text here */}
+    {/* Optional */}
   </div>
 );
 
@@ -28,7 +28,7 @@ const Hero = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   
-  // State to control the toggle button (false = Explore, true = Let's Go)
+  // Toggle state
   const [isToggled, setIsToggled] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Hero = () => {
     return () => ctx.revert();
   }, []);
 
-  // Helper for standard navigation
+  // Navigation
   const navigate = (destination) => {
     const section = document.getElementById(destination);
     if (section) {
@@ -57,7 +57,7 @@ const Hero = () => {
     }
   };
 
-  // Handle the toggle interaction
+  // Handler
   const handleToggle = (e) => {
     if (!isToggled) {
       setIsToggled(true); 
@@ -70,7 +70,7 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} id="home" className={styles.hero}>
-      {/* Background Image */}
+      {/* Background */}
       <motion.div
         className={styles.heroBackground}
         initial={{ opacity: 0 }}
@@ -80,16 +80,16 @@ const Hero = () => {
         <img
           src={Background}
           alt="Hero Background"
-          // 'eager' is better for Hero backgrounds (LCP), but 'lazy' can save data if requested.
+          // LCP eager
           loading="eager" 
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
       </motion.div>
 
-      {/* Floating Glow */}
+      {/* Glow */}
       <div className={styles.float} />
 
-      {/* 3D Model Embed (Lazy Loaded) */}
+      {/* Disabled embed
       <motion.div
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
         initial={{ opacity: 0 }}
@@ -100,6 +100,7 @@ const Hero = () => {
           <SplineEmbed />
         </Suspense>
       </motion.div>
+      */}
 
       {/* Content */}
       <div className={styles.contentWrapper}>
@@ -123,7 +124,7 @@ const Hero = () => {
             </div>
 
           <div className={styles.buttonGroup}>
-            {/* Button 1: Contact Me */}
+            {/* Button 1 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -137,7 +138,7 @@ const Hero = () => {
               </button>
             </motion.div>
 
-            {/* Button 2: Toggle "Explore" -> "Let's Go" */}
+            {/* Button 2 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -237,7 +238,7 @@ const Hero = () => {
                           </svg>
 
                           <span className={styles.content}>
-                            {/* State 1: "Explore" */}
+                            {/* State 2 */}
                             <span className={`${styles.text} ${styles.state2}`}>
                               <span data-label="P" style={{ '--i': 1 }}>P</span>
                               <span data-label="r" style={{ '--i': 2 }}>r</span>
@@ -250,7 +251,7 @@ const Hero = () => {
 
                             </span>
 
-                            {/* State 2: "Let's Go" */}
+                            {/* State 1 */}
                             <span className={`${styles.text} ${styles.state1}`}>
                               <span data-label="L" style={{ '--i': 1 }}>L</span>
                               <span data-label="e" style={{ '--i': 2 }}>e</span>
