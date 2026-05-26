@@ -37,17 +37,71 @@
   width: 100%;
   max-width: 800px; 
   
-  /* Removed the complex purple radial gradients, using a solid clean dark background */
-  background-color: var(--black);
-  border: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle border for definition */
+  /* RESTORED YOUR EXACT ORIGINAL BACKGROUND */
+  background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+
   border-radius: 1rem;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Replaced inset shadow with a standard drop shadow */
-  transition: transform 0.3s ease;
+  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+  
+  /* Removed transition and hover completely so nothing happens on mouse over */
 }
 
-/* Optional: Keep or remove the slight lift effect. I have reduced it so it's less jarring */
-.card:hover {
-  transform: translateY(-2px);
+/* Restored Original Card Border / Glow */
+.cardBorder {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: -10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background-image: linear-gradient(
+    0deg,
+    hsl(0, 0%, 100%) -50%,
+    hsl(0, 0%, 40%) 100%
+  );
+  border-radius: 1rem;
+}
+
+.cardBorder::before {
+  content: "";
+  pointer-events: none;
+  /* Changed fixed to absolute so the purple glow stays contained in the card */
+  position: absolute; 
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+  width: 200%;
+  height: 10rem;
+  background-image: linear-gradient(
+    0deg,
+    hsla(0, 0%, 100%, 0) 0%,
+    hsl(277, 95%, 60%) 40%,
+    hsl(277, 95%, 60%) 60%,
+    hsla(0, 0%, 40%, 0) 100%
+  );
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    /* Adjusted transform to ensure it stays centered while rotating */
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .cardTitleContainer {
@@ -122,22 +176,21 @@
   line-height: 1.4;
 }
 
-/* --- Pagination Styles --- */
+/* --- Pagination Styles (Updated to be visible) --- */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.8rem; /* Slightly larger gap */
+  gap: 0.8rem; 
   margin-top: 2rem;
 }
 
-/* Base Bullet (Inactive) */
 .pageBullet {
-  width: 14px; /* Increased size for better visibility */
+  width: 14px; 
   height: 14px;
   border-radius: 50px; 
-  border: 2px solid rgba(255, 255, 255, 0.1); /* Added border */
-  background-color: rgba(255, 255, 255, 0.5); /* Increased opacity to make it brighter */
+  border: 2px solid rgba(255, 255, 255, 0.1); 
+  background-color: rgba(255, 255, 255, 0.5); 
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
@@ -148,11 +201,10 @@
   transform: scale(1.1);
 }
 
-/* Active Bullet (Expanded Pill) */
 .activeBullet {
-  width: 35px; /* Wider pill shape */
+  width: 35px; 
   height: 14px; 
-  background-color: #8b5cf6; /* Matching your primary purple theme */
+  background-color: #8b5cf6; 
   border: none;
   box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
   transform: scale(1); 
