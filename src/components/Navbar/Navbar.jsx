@@ -19,7 +19,7 @@ const menuItems = [
 ];
 
 // --- PASTE YOUR RESUME LINK HERE ---
-const RESUME_LINK = "https://drive.google.com/file/d/1rpZvtowckXQKqSiT45CtIf166rP_gqvo/view?usp=drive_link"; 
+const RESUME_LINK = "https://drive.google.com/file/d/1nRpy4t5gQ-ksToUd_B_gx8kUVpoaMt2L/view?usp=sharing"; 
 
 function cn(...inputs) {
   return inputs.filter(Boolean).join(' ');
