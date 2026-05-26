@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Ensure it sits well on your dark background */
   background-color: transparent; 
 }
 
@@ -38,70 +37,17 @@
   width: 100%;
   max-width: 800px; 
   
-  background-color: hsla(240, 15%, 9%, 1);
-  background-image: radial-gradient(
-      at 88% 40%,
-      hsla(240, 15%, 9%, 1) 0px,
-      transparent 85%
-    ),
-    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
-    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
-    radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
-    radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
-    radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
-
+  /* Removed the complex purple radial gradients, using a solid clean dark background */
+  background-color: var(--black);
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle border for definition */
   border-radius: 1rem;
-  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Replaced inset shadow with a standard drop shadow */
   transition: transform 0.3s ease;
 }
 
+/* Optional: Keep or remove the slight lift effect. I have reduced it so it's less jarring */
 .card:hover {
-  transform: translateY(-5px);
-}
-
-.cardBorder {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: -10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-  background-image: linear-gradient(
-    0deg,
-    hsl(0, 0%, 100%) -50%,
-    hsl(0, 0%, 40%) 100%
-  );
-  border-radius: 1rem;
-}
-
-.cardBorder::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  z-index: 200;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%), rotate(0deg);
-  transform-origin: left;
-  width: 200%;
-  height: 10rem;
-  background-image: linear-gradient(
-    0deg,
-    hsla(0, 0%, 100%, 0) 0%,
-    hsl(277, 95%, 60%) 40%,
-    hsl(277, 95%, 60%) 60%,
-    hsla(0, 0%, 40%, 0) 100%
-  );
-  animation: rotate 8s linear infinite;
-}
-
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
-  }
+  transform: translateY(-2px);
 }
 
 .cardTitleContainer {
@@ -148,7 +94,7 @@
 
 .cardListItem {
   display: flex;
-  align-items: center; /* Center align icons with text */
+  align-items: center; 
   gap: 0.8rem;
 }
 
@@ -156,20 +102,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0; 
   width: 1.8rem;
   height: 1.8rem;
   background-color: var(--primary);
   border-radius: 50%;
-  
-  /* --- GLOWING EFFECT --- */
   box-shadow: 0 0 10px var(--primary), 0 0 20px rgba(139, 92, 246, 0.4);
 }
 
 .checkSvg {
   width: 1rem;
   height: 1rem;
-  color: var(--black); /* Icon color inside circle */
+  color: var(--black); 
 }
 
 .listText {
@@ -178,38 +122,38 @@
   line-height: 1.4;
 }
 
-/* Pagination */
+/* --- Pagination Styles --- */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.8rem; /* Slightly larger gap */
   margin-top: 2rem;
 }
 
-/* Bullet */
+/* Base Bullet (Inactive) */
 .pageBullet {
-  width: 10px;
-  height: 10px;
+  width: 14px; /* Increased size for better visibility */
+  height: 14px;
   border-radius: 50px; 
-  border: none;
-  background-color: rgba(255, 255, 255, 0.368);
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Added border */
+  background-color: rgba(255, 255, 255, 0.5); /* Increased opacity to make it brighter */
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s ease;
   padding: 0;
 }
 
-/* Hover */
 .pageBullet:hover {
-  background-color: rgba(255, 255, 255, 0.76);
+  background-color: rgba(255, 255, 255, 0.9);
   transform: scale(1.1);
 }
 
-/* Active */
+/* Active Bullet (Expanded Pill) */
 .activeBullet {
-  width: 30px; 
-  height: 10px; 
-  background-color: var(--primary); 
-  box-shadow: 0 0 10px var(--primary);
+  width: 35px; /* Wider pill shape */
+  height: 14px; 
+  background-color: #8b5cf6; /* Matching your primary purple theme */
+  border: none;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
   transform: scale(1); 
 }
